@@ -69,6 +69,10 @@ public class QueueTwoWay {
 		return curElementCount==0;
 	}
 	
+	public int size() {
+		return curElementCount;
+	}
+	
 	@Override
 	public String toString() {
 		return Arrays.toString(elements)+"\n head :"+head+"\n tail :"+tail;

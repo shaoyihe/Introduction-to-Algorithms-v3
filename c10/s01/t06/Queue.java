@@ -2,12 +2,14 @@ package c10.s01.t06;
 
 import java.util.Stack;
 
-/** two stack build queue
+/**10.1-6 
+ * two stack build queue
  * strategy :
  * 		when enqueue element,all always push in stack 
  * 		when dequeue element,pop out stack,if null, pop all in to out
  * 
  * @author he
+ * @email wubuqilai@gmail.com
  */
 public class Queue<T> {
 	private  Stack<T> in=new Stack<T>();
