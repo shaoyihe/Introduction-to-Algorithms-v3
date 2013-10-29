@@ -10,7 +10,7 @@ public class SinglycCircularLinked<T> {
 	
 	private Node<T> head=null;
 	private Node<T> tail=null;
-	int count=0;
+	private int count=0;
 	
 	/** O(1)
 	 * insert to head
@@ -50,6 +50,43 @@ public class SinglycCircularLinked<T> {
 		return -1;
 	}
 	
+	
+	/** 10.2-6
+	 * @param candidate
+	 * @return
+	 */
+	public SinglycCircularLinked<T> union(SinglycCircularLinked<T> candidate) {
+		if (candidate!=null) {
+			this.tail.next=candidate.head;
+			candidate.tail.next=this.head;
+			this.tail=candidate.tail;
+			this.count+=candidate.count;
+		}
+		return this;
+	}
+	
+	
+	/**O(n) 
+	 * 10.2-7
+	 * @return
+	 */
+	public SinglycCircularLinked<T> reverse() {
+		if (this.head!=null) {
+			for (Node<T> prev=this.head,cur=this.head.next;cur!=this.head;) {
+				Node<T> next=cur.next;
+				cur.next=prev;
+				prev=cur;
+				cur=next;
+			}
+			this.head.next=this.tail;
+			//wrap head tail
+			Node<T> temp=this.head;
+			this.head=this.tail;
+			this.tail=temp;
+		}
+		return this;
+	}
+	
 	/** worst O(n)
 	 * @param element
 	 * @return
@@ -79,6 +116,7 @@ public class SinglycCircularLinked<T> {
 		return false;
 	}
 	
+	
 	public boolean isEmpty() {
 		return head==null;
 	}
@@ -88,6 +126,22 @@ public class SinglycCircularLinked<T> {
 	}
 	
 	
+	@Override
+	public String toString() {
+		StringBuilder resultBuilder=new StringBuilder();
+		if (this.head!=null) {
+			resultBuilder.append(this.head.element.toString()+",");
+			for (Node<T> node=this.head.next;node!=this.head;node=node.next) {
+				resultBuilder.append(node.element.toString()+",");
+			}
+		}
+		String result=resultBuilder.toString();
+		return "SinglycCircularLinked ["+result.substring(0, result.length()-1)+"]";
+	}
+
+
+
+
 	private class Node<T>{
 		public Node<T> next=null;
 		public T element;
