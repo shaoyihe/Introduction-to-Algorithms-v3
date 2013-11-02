@@ -6,6 +6,7 @@ import org.junit.Test;
 
 public class StackTest {
 	Stack stack=new Stack(10);
+	
 	@Test
 	public void test() throws Exception {
 		stack.push(10);

@@ -136,7 +136,7 @@ public class SinglycCircularLinked<T> {
 			}
 		}
 		String result=resultBuilder.toString();
-		return "SinglycCircularLinked ["+result.substring(0, result.length()-1)+"]";
+		return "SinglycCircularLinked ["+(result.length()>0 ? result.substring(0,result.length()-1) : "")+"]";
 	}
 
 
