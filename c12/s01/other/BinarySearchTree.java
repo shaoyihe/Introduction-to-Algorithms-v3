@@ -2,11 +2,25 @@ package c12.s01.other;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.Random;
 
 
-public class BinarySearchTree {
+/** util build BinarySearchTree
+ * @author he
+ *
+ */
+public class BinarySearchTree { 
+	private Random random=new Random();
 	public Node root;
 	
+	
+	
+	public BinarySearchTree(int nodeCount) {
+		for (int i = 0; i < nodeCount; i++) {
+			insert(random.nextInt(nodeCount*5));
+		}
+	}
+
 	public void insert(int element) {
 		Node newNode=new Node(element);
 		if (root==null) {
@@ -73,12 +87,4 @@ public class BinarySearchTree {
 		
 	}
 	
-	public static void main(String[] args) {
-		BinarySearchTree binarySearchTree=new BinarySearchTree();
-		int[] arr=new int[]{4,3,7,2,1,8,6};
-		for (int i = 0; i < arr.length; i++) {
-			binarySearchTree.insert(arr[i]);
-		}
-		System.err.println(binarySearchTree.breadthFirst());
-	}
 }
