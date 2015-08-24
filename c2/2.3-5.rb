@@ -1,9 +1,8 @@
-def binary_search(arr, target, from = 0 ,to = arr.length - 1)
+def binary_search(arr, target, from = 0 ,to = arr.length - 1 , m = (from + to)/2)
 	if from > to
 		return -1
 	end
 
-	m = (from+to)/2
 	if arr[m] > target
 		return binary_search(arr, target, from, m - 1)
 	elsif arr[m] < target
