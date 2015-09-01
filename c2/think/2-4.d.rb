@@ -27,15 +27,13 @@ def combine(arr , from , middle , to , result)
 		i += 1
 	end
 
-	left_i.upto(left.length - 1) do |value|
-		result.concat(right.map { |e|  "(#{left[value]},#{e})"})
-		arr[i] = left[value]
-		i += 1
-	end
+	arr[i..to] = left[left_i..left.length-1] if left_i < left.length
 	arr[i..to] = right[right_i..right.length - 1] if right_i < right.length
+
 end
 
 res = []
 a = [2,3,8,6,1]
 inversion(a , res)
-p res.uniq
+p a
+p res
