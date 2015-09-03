@@ -42,7 +42,6 @@ def find_cross_max_sub_array(arr, from , m, to)
 	end
 	left_max = 0 if left_max.nil?
 	right_max = 0 if right_max.nil?
-	# p "#{left_max} #{right_max}"
 	return left_from, right_to, (left_max + right_max)
 end
 
