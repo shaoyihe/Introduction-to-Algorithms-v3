@@ -12,13 +12,13 @@ import java.util.*;
  */
 public class Heap {
 
-    public static void prettyPrint(int[] args) {
+    public static void prettyPrint(int[] args, int heapSize) {
         final String FILL_SPACE = " ";
         int maxLength = Arrays.stream(args).map(a -> String.valueOf(a).length()).max().getAsInt();
         if (maxLength % 2 == 1) {
             maxLength++;
         }
-        final int heapHeight = (int) Math.floor(Math.log(args.length) / Math.log(2));
+        final int heapHeight = (int) Math.floor(Math.log(heapSize) / Math.log(2));
 
         final int defaultOffset = 2;
         final Map<Integer, Integer> cache = new HashMap<>();
@@ -41,13 +41,17 @@ public class Heap {
                     validOffset = curLeftOffset - cache.getOrDefault(j - 1, 0) - (isFirst ? 0 : maxLength);
                 }
                 cache.put(j, curLeftOffset);
-                if (j < args.length) {
+                if (j < heapSize) {
                     line.append(Strings.repeat(FILL_SPACE, validOffset)).append(fillCenter(maxLength, args[j]));
                 }
             }
             result.add(0, line.toString());
         }
-        result.stream().forEach(System.err::println);
+        result.forEach(System.err::println);
+    }
+
+    public static void prettyPrint(int[] args) {
+        prettyPrint(args, args.length);
     }
 
     public static String fillCenter(int totalLength, int content) {
